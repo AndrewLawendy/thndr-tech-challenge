@@ -31,8 +31,8 @@ const ExploreStocks = () => {
   }, [fetchNextPage, hasNextPage, isLoading]);
 
   return (
-    <div className="max-w-6xl mx-auto px-4 py-6">
-      <div className="sticky top-0 bg-white z-10 pb-4">
+    <>
+      <div className="sticky top-16 bg-gray-50 z-10 pb-4 pt-6 -mt-6">
         <input
           type="search"
           placeholder="Search stocks..."
@@ -59,39 +59,37 @@ const ExploreStocks = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
           {tickers.map((ticker) => (
             <div
-              className="p-4 border border-border rounded-lg hover:shadow-md transition-shadow"
+              className="p-4 border border-border rounded-lg hover:shadow-md transition-shadow bg-background"
               key={`${ticker.ticker}-${ticker.last_updated_utc}`}
             >
-              <div className="p-4">
-                <div className="flex justify-between items-start mb-2">
-                  <div>
-                    <h3 className="text-lg font-bold text-gray-900">
-                      {ticker.ticker}
-                    </h3>
-                    <p className="text-sm text-gray-600 line-clamp-2 mt-1">
-                      {ticker.name}
-                    </p>
-                  </div>
+              <div className="flex justify-between items-start mb-2">
+                <div>
+                  <h3 className="text-lg font-bold text-gray-900">
+                    {ticker.ticker}
+                  </h3>
+                  <p className="text-sm text-gray-600 line-clamp-2 mt-1">
+                    {ticker.name}
+                  </p>
                 </div>
-                <div className="flex flex-wrap gap-2 mt-3">
-                  <span
-                    className={`px-2 py-1 rounded-full text-xs font-medium ${getTypeStyle(ticker.type).color}`}
-                  >
-                    {getTypeStyle(ticker.type).label}
-                  </span>
-                  <span className="px-2 py-1 rounded-full text-xs font-medium bg-gray-100 text-gray-800 border border-gray-200">
-                    {ticker.primary_exchange}
-                  </span>
-                </div>
-                <div className="mt-3 text-xs text-gray-500">
-                  <p>Currency: {ticker.currency_name?.toUpperCase()}</p>
-                  {ticker.last_updated_utc && (
-                    <p>
-                      Updated:{" "}
-                      {new Date(ticker.last_updated_utc).toLocaleDateString()}
-                    </p>
-                  )}
-                </div>
+              </div>
+              <div className="flex flex-wrap gap-2 mt-3">
+                <span
+                  className={`px-2 py-1 rounded-full text-xs font-medium ${getTypeStyle(ticker.type).color}`}
+                >
+                  {getTypeStyle(ticker.type).label}
+                </span>
+                <span className="px-2 py-1 rounded-full text-xs font-medium bg-gray-100 text-gray-800 border border-gray-200">
+                  {ticker.primary_exchange}
+                </span>
+              </div>
+              <div className="mt-3 text-xs text-gray-500">
+                <p>Currency: {ticker.currency_name?.toUpperCase()}</p>
+                {ticker.last_updated_utc && (
+                  <p>
+                    Updated:{" "}
+                    {new Date(ticker.last_updated_utc).toLocaleDateString()}
+                  </p>
+                )}
               </div>
             </div>
           ))}
@@ -101,7 +99,7 @@ const ExploreStocks = () => {
       )}
 
       {error !== null && <Error />}
-    </div>
+    </>
   );
 };
 

@@ -12,7 +12,7 @@ const Error = ({
   retry,
 }: ErrorProps) => {
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-background text-text-primary p-4">
+    <div className="flex flex-col items-center justify-center bg-background text-text-primary p-4">
       <div className="w-full max-w-md">
         <img src={ErrorImage} alt="Error image" />
       </div>
