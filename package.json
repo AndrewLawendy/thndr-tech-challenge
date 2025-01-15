@@ -11,8 +11,10 @@
     "prepare": "husky"
   },
   "dependencies": {
+    "@polygon.io/client-js": "^7.3.2",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react-dom": "^18.3.1",
+    "react-query": "^3.39.3"
   },
   "devDependencies": {
     "@commitlint/cli": "^19.6.1",
