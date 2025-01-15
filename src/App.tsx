@@ -4,7 +4,13 @@ import SplashWrapper from "./components/SplashWrapper";
 import ExploreStocks from "./pages/ExploreStocks/ExploreStocks";
 
 const queryClient = new QueryClient({
-  defaultOptions: { queries: { retry: false } },
+  defaultOptions: {
+    queries: {
+      // Once every minute
+      retry: 1,
+      retryDelay: 60000,
+    },
+  },
 });
 
 function App() {
