@@ -43,7 +43,7 @@ const ExploreStocks = () => {
       </div>
 
       {isLoading && (
-        <div className="text-center py-4">
+        <div className="text-center py-4" role="status" aria-label="Loading">
           <div className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-secondary border-r-transparent"></div>
         </div>
       )}
