@@ -6,9 +6,7 @@ import ExploreStocks from "./pages/ExploreStocks/ExploreStocks";
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
-      // Once every minute
-      retry: 1,
-      retryDelay: 60000,
+      retry: false,
     },
   },
 });

@@ -4,15 +4,19 @@ type ErrorProps = {
   title?: string;
   message?: string;
   retry?: () => void;
+  className?: string;
 };
 
 const Error = ({
   title = "Oops! Something went wrong",
   message = "We're sorry, but we couldn't execute your last request.",
   retry,
+  className,
 }: ErrorProps) => {
   return (
-    <div className="flex flex-col items-center justify-center bg-background text-text-primary p-4">
+    <div
+      className={`${className} flex flex-col items-center justify-center bg-background text-text-primary p-4`}
+    >
       <div className="w-full max-w-md">
         <img src={ErrorImage} alt="Error image" />
       </div>
