@@ -22,6 +22,7 @@ const ExploreStocks = () => {
     hasNextPage,
   } = useTickers(debouncedSearch);
   const lastTickerRef = useRef<HTMLDivElement>(null);
+  const noData = !isLoading && !isFetchingNextPage && tickers.length === 0;
 
   useEffect(() => {
     if (!lastTickerRef.current || !hasNextPage) return;
@@ -54,7 +55,7 @@ const ExploreStocks = () => {
         />
       </div>
 
-      {debouncedSearch && tickers === undefined && (
+      {noData && (
         <NoData
           title="No Stocks Found"
           message="We couldn't find any stocks matching your search criteria. Please try adjusting your search or check back later."

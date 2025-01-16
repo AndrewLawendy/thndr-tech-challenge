@@ -20,7 +20,7 @@ function App() {
         <NavBar />
 
         {/* Routes should go here */}
-        <main className="max-w-7xl mx-auto pt-6 px-4 sm:px-6 lg:px-8 min-h-screen">
+        <main className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8 min-h-screen">
           <ExploreStocks />
         </main>
       </SplashWrapper>
