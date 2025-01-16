@@ -17,12 +17,19 @@ const ExploreStocks = () => {
     tickers,
     isLoading,
     isFetchingNextPage,
+    isRefetching,
     error,
     fetchNextPage,
     hasNextPage,
+    refetch,
   } = useTickers(debouncedSearch);
   const lastTickerRef = useRef<HTMLDivElement>(null);
-  const noData = !isLoading && !isFetchingNextPage && tickers?.length === 0;
+  const noData =
+    !isLoading &&
+    !isFetchingNextPage &&
+    error === null &&
+    tickers &&
+    tickers.length === 0;
 
   useEffect(() => {
     if (!lastTickerRef.current || !hasNextPage) return;
@@ -99,10 +106,9 @@ const ExploreStocks = () => {
           </div>
         ))}
 
-        {(hasNextPage || isLoading || isFetchingNextPage) && error === null && (
+        {(isLoading || isFetchingNextPage || isRefetching) && (
           <>
             <StockSkeleton
-              ref={lastTickerRef}
               role="status"
               aria-label="Loading"
               className="block"
@@ -114,7 +120,9 @@ const ExploreStocks = () => {
         )}
       </div>
 
-      {error !== null && <Error />}
+      {hasNextPage && error === null && <div ref={lastTickerRef} />}
+
+      {error !== null && <Error className="mt-6" retry={refetch} />}
     </>
   );
 };

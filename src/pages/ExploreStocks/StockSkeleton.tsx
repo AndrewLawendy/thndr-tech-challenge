@@ -9,7 +9,7 @@ const StockSkeleton = forwardRef<HTMLDivElement, StockSkeletonProps>(
     <div
       {...props}
       ref={ref}
-      className={`${className} overflow-hidden bg-white border-gray-200 shadow-sm animate-pulse`}
+      className={`${className} overflow-hidden bg-white rounded-lg border-gray-200 shadow-sm animate-pulse`}
     >
       <div className="p-4">
         <div className="flex justify-between items-start mb-2">
