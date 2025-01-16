@@ -1,12 +1,13 @@
 import { forwardRef } from "react";
 
-type StockSkeletonProps = {
+interface StockSkeletonProps extends React.HTMLAttributes<HTMLDivElement> {
   className?: string;
-};
+}
 
 const StockSkeleton = forwardRef<HTMLDivElement, StockSkeletonProps>(
-  ({ className = "" }: StockSkeletonProps, ref) => (
+  ({ className = "", ...props }: StockSkeletonProps, ref) => (
     <div
+      {...props}
       ref={ref}
       className={`${className} overflow-hidden bg-white border-gray-200 shadow-sm animate-pulse`}
     >

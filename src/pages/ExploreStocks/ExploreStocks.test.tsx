@@ -58,25 +58,22 @@ describe("ExploreStocks Component", () => {
     expect(screen.getByRole("status")).not.toBeNull(); // loading spinner
   });
 
-  test("displays NoData when no tickers are found", async () => {
+  test("displays NoData when no tickers are found", () => {
     mockUseTickers.mockReturnValue({
-      tickers: undefined,
+      tickers: [],
       isLoading: false,
+      isFetchingNextPage: false,
       error: null,
     });
 
     render(<ExploreStocks />);
-    const input =
-      screen.getByPlaceholderText<HTMLInputElement>("Search stocks...");
-    fireEvent.change(input, { target: { value: "AAPL" } });
-    await waitFor(() => {
-      expect(screen.getByText("No Stocks Found")).not.toBeNull();
-      expect(
-        screen.getByText(
-          "We couldn't find any stocks matching your search criteria. Please try adjusting your search or check back later.",
-        ),
-      ).not.toBeNull();
-    });
+
+    expect(screen.getByText("No Stocks Found")).not.toBeNull();
+    expect(
+      screen.getByText(
+        "We couldn't find any stocks matching your search criteria. Please try adjusting your search or check back later.",
+      ),
+    ).not.toBeNull();
   });
 
   test("renders tickers when data is available", () => {

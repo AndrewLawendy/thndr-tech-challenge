@@ -22,7 +22,7 @@ const ExploreStocks = () => {
     hasNextPage,
   } = useTickers(debouncedSearch);
   const lastTickerRef = useRef<HTMLDivElement>(null);
-  const noData = !isLoading && !isFetchingNextPage && tickers.length === 0;
+  const noData = !isLoading && !isFetchingNextPage && tickers?.length === 0;
 
   useEffect(() => {
     if (!lastTickerRef.current || !hasNextPage) return;
@@ -101,10 +101,15 @@ const ExploreStocks = () => {
 
         {(hasNextPage || isLoading || isFetchingNextPage) && error === null && (
           <>
-            <StockSkeleton ref={lastTickerRef} className="block" />
-            <StockSkeleton className="hidden md:block" />
-            <StockSkeleton className="hidden lg:block" />
-            <StockSkeleton className="hidden lg:block" />
+            <StockSkeleton
+              ref={lastTickerRef}
+              role="status"
+              aria-label="Loading"
+              className="block"
+            />
+            <StockSkeleton aria-label="Loading" className="hidden md:block" />
+            <StockSkeleton aria-label="Loading" className="hidden lg:block" />
+            <StockSkeleton aria-label="Loading" className="hidden lg:block" />
           </>
         )}
       </div>
